@@ -1,4 +1,4 @@
-function [x] = Thomas(g, f, e, r, n)
+function [x] = thomas(g, f, e, r, n)
     
     for k = 2:n
         e(k) = e(k)/f(k-1);

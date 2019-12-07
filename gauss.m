@@ -1,4 +1,4 @@
-function x=Gauss(A,B,n)
+function x=gauss(A,B,n)
 
     
 % List of the input
