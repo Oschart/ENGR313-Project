@@ -1,6 +1,6 @@
-function x=gauss(A,B,n)
+function x=gauss(A,B)
 
-    
+n = size(A, 1);
 % List of the input
 % A is an nxn matrix
 %B is an nx1 vector
