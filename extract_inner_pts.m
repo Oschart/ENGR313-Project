@@ -1,31 +1,29 @@
-function [xi, yi] = extract_inner_pts(X, Y, v1, v2)
-    n = length(X);
+function [pts] = extract_inner_pts(T, v1, v2)
+    n = length(T);
     st = 1;
     en = 1;
     for i = 2:n
         st = i+1;
-        if X(i) > v1
+        if T(i) > v1
             st = i;
             break;
-        elseif X(i) == v1
+        elseif T(i) == v1
             break;
         end
     end
     for i = st-1:n
         en = i-1;
-        if X(i) < v2
+        if T(i) < v2
             en = i;
             break;
-        elseif X(i) == v2
+        elseif T(i) == v2
             break;
         end
     end
     if st > en
-        xi = [];
-        yi = [];
+        pts = [];
     else
-        xi = X(1, st:en);
-        yi = Y(1, st:en);
+        pts = st:1:en;
     end
     
     
