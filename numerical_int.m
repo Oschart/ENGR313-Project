@@ -3,7 +3,7 @@ function [res] = numerical_int( x, y)
 % integral
     n = length(x);
     sum =0;
-    for i=2:n-1
+    for i=2:n-2
         h= (x(i+1)-x(i))/2;
         sum = sum + h*(y(i)+y(i+1));
     end
