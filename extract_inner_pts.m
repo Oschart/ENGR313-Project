@@ -5,7 +5,7 @@ function [pts] = extract_inner_pts(T, v1, v2)
     for i = 2:n
         st = i+1;
         if T(i) > v1
-            st = i;
+            st = i
             break;
         elseif T(i) == v1
             break;
@@ -13,8 +13,8 @@ function [pts] = extract_inner_pts(T, v1, v2)
     end
     for i = st-1:n
         en = i-1;
-        if T(i) < v2
-            en = i;
+        if T(i) > v2
+            %en = i
             break;
         elseif T(i) == v2
             break;
