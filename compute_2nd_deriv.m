@@ -1,5 +1,5 @@
 function [d2y] = compute_2nd_deriv(x, y)
-    n = size(x, 2);
+    n = length(x);
     d2y(1) = 0;
     f(1) = 2*(x(3) - x(1));
     g(1) = (x(3) - x(2));

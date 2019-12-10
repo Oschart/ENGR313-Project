@@ -1,5 +1,5 @@
 function [x] = thomas(g, f, e, r)
-    n = size(f, 2);
+    n = length(f);
     for k = 2:n
         e(k) = e(k)/f(k-1);
         f(k) = f(k) - e(k)*g(k-1);

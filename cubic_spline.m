@@ -1,5 +1,5 @@
 function [coff] = cubic_spline(x, y, d2y)
-    n = size(x, 2);
+    n = length(x);
     for i = 1:n-1
         t1 = d2y(i)/(6*(x(i+1) - x(i)));
         t2 = d2y(i+1)/(6*(x(i+1) - x(i)));
