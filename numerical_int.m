@@ -1,7 +1,7 @@
 function [res] = numerical_int( splines,values,x1, x2)
 % this function uses the trapizoidal method to calculate the value of the
 % integral
-    n=100;
+    n=length(values);
     flag = 0;
     h = (x2-x1)/n;
     sum =0;
