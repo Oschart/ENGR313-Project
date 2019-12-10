@@ -11,7 +11,7 @@ function [res] = numerical_int( x, y)
     val1= h1*(y(1)+y(2));
     hn= (x(n)-x(n-1))/2;
     valn= hn*(y(n)+y(n-1));
-    res = val1+valn+2*sum;
+    res = val1+valn+sum;
     
 
 end
