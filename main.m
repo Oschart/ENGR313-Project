@@ -14,8 +14,9 @@ data_start = Vg(1)
 data_end = Vg(end)
 
 disp('Welcome!');
-neg = 1;    % negating intergral in case endpoints are flipped
+
 while 1
+    neg = 1;    % negating intergral in case endpoints are flipped
     prompt1 = 'Insert v1: ';
     v1 = input(prompt1);
     prompt2 = 'Insert v2: ';
@@ -79,7 +80,12 @@ plot_cubic_splines_alone(Xspline, Yspline, spline_pts);
 plot_cubic_splines_with_dataset(Xspline, Yspline, Vg, P, inner_pts);
 
 
-plot_Bulk_numerical(X, B_analyt);
-plot_Bulk_analyt(X, B_numerical);
-plot_Bulk_numerical_with_analyt(X, B_analyt);
+
+plot_Bulk_numerical(X,B_numerical);
+plot_Bulk_analyt(X, B_analyt);
+plot_Bulk_numerical_with_analyt(X, B_numerical, B_analyt);
+
+%BONUUUUUUUUUUUUUUUUUUS
+
+
 
