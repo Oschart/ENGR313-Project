@@ -79,15 +79,7 @@ plot_cubic_splines_alone(Xspline, Yspline, spline_pts);
 plot_cubic_splines_with_dataset(Xspline, Yspline, Vg, P, inner_pts);
 
 
-figure(3)
-semilogx(X, B_analyt, 'LineWidth', 1, 'Color', 'r')
-xlabel("Vg (m^3/kg)")
-ylabel("Constant-Quality Bulk Modulus (kPa")
-legend("Analytical")
-
-figure(4)
-semilogx(X, B_numerical, 'LineWidth', 1, 'Color', 'b')
-xlabel("Vg (m^3/kg)")
-ylabel("Constant-Quality Bulk Modulus (kPa")
-legend("Numerical")
+plot_Bulk_numerical(X, B_analyt);
+plot_Bulk_analyt(X, B_numerical);
+plot_Bulk_numerical_with_analyt(X, B_analyt);
 
