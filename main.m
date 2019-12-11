@@ -26,34 +26,54 @@ while 1
     end
 end
 
-g1 = get_interval(Vg, v1)
-g2 = get_interval(Vg, v2)
-P_v1 = F(cubicSpline(get_interval(Vg, v1)), v1)
-P_v2 = F(cubicSpline(get_interval(Vg, v2)), v2)
+P_v1 = F(cubicSpline(get_interval(Vg, v1), :), v1)
+P_v2 = F(cubicSpline(get_interval(Vg, v2), :), v2)
 
-inner_pts = extract_inner_pts(Vg, v1, v2)
-X = [v1 Vg(inner_pts) v2];
-Y = [P_v1 P(inner_pts) P_v2];
+
+inner_pts = extract_inner_pts(Vg, v1, v2);
+X = [v1 Vg(inner_pts) v2]
+Y = [P_v1 P(inner_pts) P_v2]
+
 if length(inner_pts) > 0
-    inner_splines = [cubicSpline(inner_pts(1)-1) cubicSpline(inner_pts)];
+    inner_splines = [cubicSpline(inner_pts(1)-1, :); cubicSpline(inner_pts, :)];
 else 
-    inner_splines = cubicSpline(get_interval(Vg, v1));
+    inner_splines = cubicSpline(get_interval(Vg, v1), :);
 end
-X
-Y
-inner_splines
+
 Wb_numerical = numerical_int(X, Y);
 
 Wb_analyt = analyt_int_sliced(inner_splines, X);
 
-% UNNIIIIIIIIIIIIT
-fprintf('Analytical Boundary Work = %d \n', Wb_analyt);
-fprintf('Numerical Boundary Work = %d \n', Wb_numerical);
+fprintf('Analytical Boundary Work = %d m^2/s^2\n', Wb_analyt);
+fprintf('Numerical Boundary Work = %d m^2/s^2\n', Wb_numerical);
 
-B = analyt_diff_sliced(inner_splines, X);
+B_analyt = -X.*analyt_diff_sliced(inner_splines, X)
+B_numerical = -X.*numerical_diff(inner_splines, X)
+
+
+Xspline = data_start:0.001:data_end;
+for i = 1: length(Xspline)
+    Yspline(i) = F(cubicSpline(get_interval(Vg, Xspline(i)), :), Xspline(i));
+end
 iz=linspace(v1,v2,length(Vg));
 
+figure(1)
+plot(Vg, P, 'LineWidth', 1);
+xlabel("Vg m^3/kg")
+ylabel("P kPA")
 
-plot(Vg, P);
+hold on
+plot(Xspline, Yspline, 'LineWidth', 1);
+hold off
+legend("Data From Table", "Cubic Splines");
+
+figure(2)
+plot(X, B_analyt, 'LineWidth', 1)
+xlabel("Vg m^3/kg")
+ylabel("Constant-Quality Bulk Modulus")
+hold on
+plot(X, B_numerical, 'LineWidth', 1)
+hold off
+legend("Analytical", "Numerical");
 %area(iz,P)
 
