@@ -11,4 +11,5 @@ function [] = plot_dataset_alone(Vg, P, shade_range)
     hold on;
     area(ax, Vg(shade_range), P(shade_range), 'EdgeColor', 'b')
     hold off
+    title("The Original Dataset")
 end

@@ -14,4 +14,5 @@ function [] = plot_cubic_splines_with_dataset(Xspline, Yspline, Vg, P, shade_ran
     hold on;
     area(ax, Vg(shade_range), P(shade_range), 'EdgeColor', 'b')
     hold off
+    title("The Generated Cubic Splines vs The Original Dataset")
 end
