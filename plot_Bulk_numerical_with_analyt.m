@@ -11,4 +11,5 @@ function []= plot_Bulk_numerical_with_analyt(X, B_numerical, B_analyt)
     
     hold off;
     legend("Analytical", "Numerical");
+    title("Bulk Modulus, analytical vs numerical differentiation")
 end

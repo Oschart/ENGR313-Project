@@ -11,4 +11,5 @@ function [] = plot_cubic_splines_alone(Xspline, Yspline, shade_range)
     hold on;
     area(ax, Xspline(shade_range), Yspline(shade_range), 'EdgeColor', 'b')
     hold off
+    title("The Generated Cubic Splines")
 end
